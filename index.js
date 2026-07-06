@@ -48,7 +48,7 @@ async function getAnimeinfo(name){
         }
     }
     catch(error){
-        console.log(error)
+        window.alert(error)
         return null
     }
 }
