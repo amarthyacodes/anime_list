@@ -7,21 +7,31 @@ const info_div = document.querySelector(".info")
 
 function addAnime(name, date, image){
     const new_div = document.createElement("div")
-    const new_info = document.createElement("p")
+    const new_name = document.createElement("p")
     const new_img = document.createElement("img")
+    const new_date = document.createElement("p")
+    const nddiv = document.createElement("div")
 
     new_div.classList.add("animediv")
-    new_info.classList.add("animeinfo")
+    new_name.classList.add("animename")
+    new_date.classList.add("animedate")
     new_img.classList.add("animeimage")
+    nddiv.classList.add("nddiv")
+
 
     new_img.src = image
-    new_info.innerHTML = `${name} on ${date}`
+    new_name.innerHTML = `${name}`
+    new_date.innerHTML = `${date}`
+    
     info_div.appendChild(new_div)
-    new_div.appendChild(new_info)
     new_div.appendChild(new_img)
+    new_div.appendChild(nddiv)
+    nddiv.appendChild(new_name)
+    nddiv.appendChild(new_date)
+    
 }
 
-async function getAnimepic(name){
+async function getAnimeinfo(name){
     try{
     const response = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(name)}`)
     if(!response.ok){
@@ -33,7 +43,8 @@ async function getAnimepic(name){
             return null
         }
         else{
-        return(info.data[0].images.jpg.image_url)
+            console.log(info)
+        return(info.data[0])
         }
     }
     catch(error){
@@ -59,13 +70,13 @@ submit.addEventListener("click", async () =>{
         window.alert("Enter name and date")
     }
    else{
-    const anime_image = await getAnimepic(anime_name.value)
-    if(anime_image === null){
+    const anime_data = await getAnimeinfo(anime_name.value)
+    if(anime_data === null){
         window.alert("No such anime")
     }
     else{
-    addAnime(anime_name.value, anime_date.value, anime_image)
-    obj.push({name: anime_name.value, date: anime_date.value, imgurl: anime_image})
+    addAnime(anime_data.title, anime_date.value, anime_data.images.jpg.image_url)
+    obj.push({name: anime_data.title, date: anime_date.value, imgurl: anime_data.images.jpg.image_url})
     localStorage.setItem("anime", JSON.stringify(obj))
     }
     
