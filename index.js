@@ -16,7 +16,7 @@ function addAnime(name, date, image){
     new_name.classList.add("animename")
     new_date.classList.add("animedate")
     new_img.classList.add("animeimage")
-    nddiv.classList.add("nddiv")
+    nddiv.classList.add("nddiv") //dom manipulation
 
 
     new_img.src = image
@@ -40,11 +40,11 @@ async function getAnimeinfo(name){
         const info = await response.json()
         
         if(info.data[0] == null){
-            return null
+            return null //promises
         }
         else{
             console.log(info)
-        return(info.data[0])
+        return(info.data[0]) 
         }
     }
     catch(error){
@@ -60,7 +60,7 @@ if (localStorage.getItem("anime")){
 obj = JSON.parse(localStorage.getItem("anime"))
 
 obj.forEach(element => {
-    addAnime(element.name, element.date, element.imgurl)
+    addAnime(element.name, element.date, element.imgurl) //json stringify parse
 });
 }
 

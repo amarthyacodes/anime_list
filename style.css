@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   font-family: "Poppins", sans-serif;
-  font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
 }
 
 body{
@@ -14,10 +14,10 @@ body{
     min-height: 100vh;
     padding: 10px;
     background-color: hsl(0, 0%, 2%);
-     color: white;
+    color: white;
 }
 
-/*divs*/
+/*Main divs*/
 
 .border{
     display: flex;
@@ -48,7 +48,7 @@ body{
 }
 
 
-
+/*anime info cards*/
 
 .animediv{
     border: 1px solid black;
@@ -76,7 +76,7 @@ body{
 }
 
 
-/*---------------------------------------------------*/
+/*Misc.*/
 
 .inplabel{
     font-size: 20px;
