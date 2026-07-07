@@ -43,7 +43,6 @@ async function getAnimeinfo(name){
             return null //promises
         }
         else{
-            console.log(info)
         return(info.data[0]) 
         }
     }
@@ -75,7 +74,7 @@ submit.addEventListener("click", async () =>{
         window.alert("No such anime")
     }
     else{
-    addAnime(anime_data.title, anime_date.value, anime_data.images.jpg.image_url)
+    addAnime(anime_data.title, anime_date.value, anime_data.images.webp.large_image_url)
     obj.push({name: anime_data.title, date: anime_date.value, imgurl: anime_data.images.jpg.image_url})
     localStorage.setItem("anime", JSON.stringify(obj))
     }
